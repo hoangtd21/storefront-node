@@ -29,6 +29,7 @@ export class ProductStore {
                 name as string,
                 String(price),
             ]);
+            conn.release();
             return result.rows[0];
         } catch (error) {
             throw new Error(`Cannot create products ${name}: ${error}`);
@@ -40,6 +41,7 @@ export class ProductStore {
             const conn = await client.connect();
             const sql = 'DELETE FROM products where id=($1)';
             const result = await conn.query(sql, [id]);
+            conn.release();
             return result.rows[0];
         } catch (error) {
             throw new Error(`Cannot delete products with id ${id}: ${error}`);
@@ -51,6 +53,7 @@ export class ProductStore {
             const conn = await client.connect();
             const sql = 'SELECT * FROM products where id=($1)';
             const result = await conn.query(sql, [id]);
+            conn.release();
             return result.rows[0];
         } catch (error) {
             throw new Error(`Cannot get product with id ${id}: ${error}`);
@@ -68,6 +71,7 @@ export class ProductStore {
                 String(price),
                 String(id),
             ]);
+            conn.release();
             return result.rows[0];
         } catch (error) {
             throw new Error(`Cannot update product with id ${id}: ${error}`);

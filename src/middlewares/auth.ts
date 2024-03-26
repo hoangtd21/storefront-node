@@ -8,7 +8,7 @@ export const verifyAuthToken = (
     req: Request,
     res: Response,
     next: NextFunction,
-) => {
+): void => {
     try {
         const authorizationHeader = req.headers.authorization;
         const token = authorizationHeader?.split(' ')[1] || '';

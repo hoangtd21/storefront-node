@@ -6,13 +6,14 @@ import {
     getProductById,
     updateProductById,
 } from '../../controllers/product';
+import { verifyAuthToken } from '../../middlewares/auth';
 
 const products = express.Router();
 
 products.get('/', getAllProducts);
-products.post('/', createProduct);
-products.delete('/:id', deleteProduct);
+products.post('/', verifyAuthToken, createProduct);
+products.delete('/:id', verifyAuthToken, deleteProduct);
 products.get('/:id', getProductById);
-products.put('/:id', updateProductById);
+products.put('/:id', verifyAuthToken, updateProductById);
 
 export default products;

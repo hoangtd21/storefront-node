@@ -11,4 +11,20 @@ describe('Order model', () => {
         const result = await store.index();
         expect(result).toEqual([]);
     });
+
+    it('Should have getOrderProducts method', () => {
+        expect(store.getOrderProducts).toBeDefined();
+    });
+
+    it('Should have create method', () => {
+        expect(store.create).toBeDefined();
+    });
+
+    it('Should have delete method', () => {
+        expect(store.delete).toBeDefined();
+    });
+
+    it('Should have index method', () => {
+        expect(store.update).toBeDefined();
+    });
 });

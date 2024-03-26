@@ -11,4 +11,20 @@ describe('User model', () => {
         const result = await store.index();
         expect(result).toEqual([]);
     });
+
+    it('Should have create method', () => {
+        expect(store.create).toBeDefined();
+    });
+
+    it('Should have delete method', () => {
+        expect(store.delete).toBeDefined();
+    });
+
+    it('Should have getById method', () => {
+        expect(store.getById).toBeDefined();
+    });
+
+    it('Should have authenicate method', () => {
+        expect(store.authenicate).toBeDefined();
+    });
 });

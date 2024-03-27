@@ -29,3 +29,40 @@
 | `DELETE` | `/api/orders/1` | Delete order by id (Need token before delete) |
 | `GET`    | `/api/orders/1` | Retrieve order by id                          |
 | `PUT`    | `/api/orders/1` | Update order by id (Need token before create) |
+
+# Database schema
+
+### products
+
+| Column | Type                   | Collation | Nullable |
+| ------ | ---------------------- | --------- | -------- |
+| id     | integer                |           | not null |
+| name   | character varying(250) |           | not null |
+| price  | integer                |           | not null |
+
+### users
+
+| Column          | Type                   | Collation | Nullable |
+| --------------- | ---------------------- | --------- | -------- |
+| id              | integer                |           | not null |
+| username        | character varying(250) |           | not null |
+| firstname       | character varying(250) |           | not null |
+| lastname        | character varying(250) |           | not null |
+| password_digest | character varying(250) |           | not null |
+
+### orders
+
+| Column  | Type    | Collation | Nullable |
+| ------- | ------- | --------- | -------- |
+| id      | integer |           | not null |
+| user_id | integer |           | not null |
+| status  | boolean |           | not null |
+
+### order_products
+
+| Column     | Type    | Collation | Nullable |
+| ---------- | ------- | --------- | -------- |
+| id         | integer |           | not null |
+| order_id   | integer |           | not null |
+| product_id | integer |           | not null |
+| quantity   | integer |           | not null |

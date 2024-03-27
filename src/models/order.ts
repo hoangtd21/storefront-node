@@ -86,7 +86,8 @@ export class OrderStore {
         try {
             const conn = await client.connect();
             const orderProductsSql =
-                'DELETE FROM order_products WHERE order_id';
+                'DELETE FROM order_products WHERE order_id=($1)';
+
             await conn.query(orderProductsSql, [id]);
 
             const sql = 'DELETE FROM orders WHERE id=($1)';
